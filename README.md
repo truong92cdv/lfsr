@@ -1,8 +1,6 @@
 # LFSR - Linear Feedback Shift Register
 
-## 0. Introduction
-
-### prepare project
+## 0. Prepare Project
 ```sh
 cd ~
 mkdir lfsr
@@ -79,7 +77,7 @@ endmodule
 
 ## 2. RTL Simulation
 
-### Verilog testbench
+### Verilog testbench (lfsr_tb.v)
 ```v
 module lfsr_tb;
   reg clk;
@@ -136,6 +134,7 @@ gtkwave ../sim/lfsr.vcd
 ## 3. Synthesis
 
 ### yosys run script (synth.ys)
+
 ```sh
 read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog ../src/lfsr.v
@@ -153,3 +152,4 @@ show -format dot -prefix ../netlist/lfsr_synth
 ```sh
 ./synth.sh
 ```
+
