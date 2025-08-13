@@ -62,3 +62,59 @@ module lfsr(q, clk, rst, seed, load);
 endmodule
 ```
 
+## 2. RTL Simulation
+
+```sh
+wget https://github.com/truong92cdv/lfsr/tree/main/src/lfsr_tb.v
+cd ..
+mkdir script
+cd script
+wget https://github.com/truong92cdv/lfsr/tree/main/script/sim.sh
+```
+
+Verilog testbench
+```v
+module lfsr_tb;
+  reg clk;
+  reg rst;
+  reg [3:0] seed;
+  reg load;
+  wire q;
+
+  lfsr L(q, clk, rst, seed, load);
+
+  // initialization & apply reset pulse
+  initial begin
+    $dumpfile("../sim/lfsr.vcd");
+    $dumpvars(0, lfsr_tb);
+
+    clk = 0;
+    load = 0;
+    seed = 0;
+    rst = 0;
+    #10 rst = 1;
+    #10 rst = 0;
+  end
+
+  // drive clock
+  always #50 clk = !clk;
+
+  // program lfsr
+  initial begin
+    #100 seed = 4'b0001;
+    load = 1;
+    #100 load = 0;
+    #500 $finish;
+  end
+endmodule
+```
+
+sim.sh
+```sh
+#!/bin/bash
+exec > ../log/sim.log 2>&1
+iverilog ../src/lfsr.v ../src/lfsr_tb.v -o ../sim/lfsr
+vvp ../sim/lfsr
+gtkwave ../sim/lfsr.vcd
+```
+
