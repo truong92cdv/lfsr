@@ -308,3 +308,9 @@ In theory, you can push clk frequency to 275 MHz without affecting the design
 
 Area = 56,617.648 µm2
 
+# 8. FUTURE DEV
+
+- Adjust **config.json** file to optimize the design
+- Use the user defined standard cell to optimize
+- Run step by step (run_synthesis -> run_floorplan -> ... )to clearly understand the Openlane flow
+
