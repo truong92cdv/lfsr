@@ -7,10 +7,11 @@ cd ~
 mkdir lfsr
 cd lfsr
 mkdir src
-wget https://github.com/truong92cdv/lfsr/tree/main/src/lfsr.v
+cd src
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr.v
 ```
 
-source code lfsr.v
+### source code lfsr.v
 ```v
 module mux(q, control, a, b);
     output q;
@@ -65,14 +66,17 @@ endmodule
 ## 2. RTL Simulation
 
 ```sh
-wget https://github.com/truong92cdv/lfsr/tree/main/src/lfsr_tb.v
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr_tb.v
 cd ..
+mkdir sim
 mkdir script
 cd script
-wget https://github.com/truong92cdv/lfsr/tree/main/script/sim.sh
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim.sh
+chmod +x sim.sh
+./sim.sh
 ```
 
-Verilog testbench
+### Verilog testbench
 ```v
 module lfsr_tb;
   reg clk;
@@ -109,7 +113,7 @@ module lfsr_tb;
 endmodule
 ```
 
-sim.sh
+### sim.sh
 ```sh
 #!/bin/bash
 exec > ../log/sim.log 2>&1
@@ -118,3 +122,18 @@ vvp ../sim/lfsr
 gtkwave ../sim/lfsr.vcd
 ```
 
+### RTL simulation with gtkwave
+![RTL simulation](./images/rtl_sim.png)
+
+## 3. Synthesis
+
+```sh
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr_tb.v
+cd ..
+mkdir sim
+mkdir script
+cd script
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim.sh
+chmod +x sim.sh
+./sim.sh
+```
