@@ -154,7 +154,7 @@ Then run the Openlane flow:
 
 ![OpenLane flow](./images/4_openlane_1.png)
 
-Your first run will not success. You will got some WARNINGs and ERRORs
+Opps! Your first run will not success. You will got some WARNINGs and ERRORs
 
 ```sh
 [STEP 3]
@@ -226,3 +226,54 @@ After fixing, run Openlane flow again:
 
 ![OpenLane flow fixed](./images/4_openlane_2.png)
 
+Boom! **Flow completed!**
+
+# 6. LAYOUT VIEW
+
+You can view the physical layout after every step to see how the things go.
+First, go to the **result** dir in your final RUN* directory
+
+![Layout view](./images/6_magic_1.png)
+
+## 1. Floorplan
+
+```sh
+magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../tmp/merged.nom.lef def read ./floorplan/lfsr.def &
+```
+![Floorplan](./images/6_magic_floorplan.png)
+
+## 2. Placement
+
+```sh
+magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../tmp/merged.nom.lef def read ./placement/lfsr.def &
+```
+
+![Placement](./images/6_magic_placement.png)
+
+## 3. Clock Tree Synthesis
+
+```sh
+magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../tmp/merged.nom.lef def read ./cts/lfsr.def &
+```
+
+![CTS](./images/6_magic_cts.png)
+
+## 4. Routing
+
+```sh
+magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../tmp/merged.nom.lef def read ./routing/lfsr.def &
+```
+
+![Routing](./images/6_magic_routing.png)
+
+## 5. Final
+
+```sh
+magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech read ./final/mag/lfsr.mag &
+```
+
+![Final](./images/6_magic_final.png)
+
+# 7. POWER, PERFORMANCE, AREA (PPA) ANALYSIS
+
+## POWER REPORT
