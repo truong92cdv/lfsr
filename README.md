@@ -280,9 +280,9 @@ magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/
 
 ![Power](./images/7_power.png)
 
-**Total power** is **90.2 µW**. 
-The **Internal power** accounts for 80%
-The **Switching power** accounts for 20%.
+- **Total power** is **90.2 µW**. 
+- **Internal power** accounts for 80%
+- **Switching power** accounts for 20%.
 
 ## PERFORMANCE REPORT
 
