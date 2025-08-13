@@ -78,7 +78,7 @@ show -format dot -prefix ../netlist/lfsr_synth
 ./synth.sh
 ```
 
-After runing synthesis, we got netlist file *netlist/lfsr_synth.v*, gate schematic *netlist/lfsr_synth.dot*, and the log file *log/synth.log*
+After runing synthesis, we got netlist file **netlist/lfsr_synth.v**, gate schematic **netlist/lfsr_synth.dot**, and the log file **log/synth.log**
 In the log file, we can see
 
 ```log
@@ -100,7 +100,7 @@ In the log file, we can see
      sky130_fd_sc_hd__xor2_1         1
 ```
 
-The netlist includes 13 cells: 4 *D_ff*, 4 gates *mux*, 1 gate *xor*, 4 gate *inverter*. We need *inverter* to invert the *rst* signal, because the standard cell sky130_fd_sc_hd__dfrtp_1 is a neg-edge D-ff while we need a pos-edge D-ff.
+The netlist includes 13 cells: 4 **D_ff**, 4 gates **mux**, 1 gate **xor**, 4 gates **inverter**. We need **inverter** to invert the **rst** signal, because the standard cell **sky130_fd_sc_hd__dfrtp_1** is a neg-edge D-ff while we need a pos-edge D-ff.
 
 Netlist schematic
 ![Netlist schematic](./images/3_lfsr_syth.png)
