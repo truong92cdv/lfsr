@@ -1,5 +1,7 @@
 # LFSR - Linear Feedback Shift Register
 
+## 0. Introduction
+
 ## 1. RTL Design
 
 ```sh
@@ -123,7 +125,7 @@ gtkwave ../sim/lfsr.vcd
 ```
 
 ### RTL simulation with gtkwave
-![RTL simulation](./images/rtl_sim.png)
+![RTL simulation](./images/2_rtl_sim.png)
 
 ## 3. Synthesis
 
