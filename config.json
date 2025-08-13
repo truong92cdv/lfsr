@@ -1,0 +1,10 @@
+{
+    "DESIGN_NAME": "lfsr",
+    "VERILOG_FILES": "dir::src/*.v",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "DESIGN_IS_CORE": true,
+    "FP_PDN_VPITCH": 6.6,
+    "FP_PDN_HPITCH": 6.6,
+    "FP_CORE_UTIL": 0.4
+}

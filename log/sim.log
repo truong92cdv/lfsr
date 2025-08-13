@@ -1,0 +1,3 @@
+VCD info: dumpfile ../sim/lfsr.vcd opened for output.
+../src/lfsr_tb.v:31: $finish called at 700 (1s)
+gtkwave: symbol lookup error: /snap/core20/current/lib/x86_64-linux-gnu/libpthread.so.0: undefined symbol: __libc_pthread_init, version GLIBC_PRIVATE
