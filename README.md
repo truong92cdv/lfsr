@@ -102,5 +102,4 @@ In the log file, we can see
 
 The netlist includes 13 cells: 4 **D_ff**, 4 gates **mux**, 1 gate **xor**, 4 gates **inverter**. We need **inverter** to invert the **rst** signal, because the standard cell **sky130_fd_sc_hd__dfrtp_1** is a neg-edge D-ff while we need a pos-edge D-ff.
 
-Netlist schematic
 ![Netlist schematic](./images/3_lfsr_syth.png)
