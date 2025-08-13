@@ -78,3 +78,29 @@ show -format dot -prefix ../netlist/lfsr_synth
 ./synth.sh
 ```
 
+After runing synthesis, we got netlist file *netlist/lfsr_synth.v*, gate schematic *netlist/lfsr_synth.dot*, and the log file *log/synth.log*
+In the log file, we can see
+
+```log
+8. Printing statistics.
+
+=== lfsr ===
+
+   Number of wires:                 44
+   Number of wire bits:             53
+   Number of public wires:          40
+   Number of public wire bits:      49
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 13
+     sky130_fd_sc_hd__clkinv_1       4
+     sky130_fd_sc_hd__dfrtp_1        4
+     sky130_fd_sc_hd__mux2_1         4
+     sky130_fd_sc_hd__xor2_1         1
+```
+
+The netlist includes 13 cells: 4 *D_ff*, 4 gates *mux*, 1 gate *xor*, 4 gate *inverter*. We need *inverter* to invert the *rst* signal, because the standard cell sky130_fd_sc_hd__dfrtp_1 is a neg-edge D-ff while we need a pos-edge D-ff.
+
+Netlist schematic
+![Netlist schematic](./images/3_lfsr_syth.png)
