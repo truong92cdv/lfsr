@@ -1,6 +1,8 @@
 # LFSR - Linear Feedback Shift Register
 
 ## 0. Prepare Project
+
+run the below command
 ```sh
 cd ~
 mkdir lfsr
@@ -20,6 +22,10 @@ wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/s
 wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim_gatelevel.sh
 chmod +x *
 ```
+
+### project hiearchy
+
+![project hiearchy](./images/0_prepare_proj.png)
 
 ## 1. RTL Design
 
