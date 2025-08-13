@@ -277,3 +277,32 @@ magic -T /home/drx/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/magic/
 # 7. POWER, PERFORMANCE, AREA (PPA) ANALYSIS
 
 ## POWER REPORT
+
+![Power](./images/7_power.png)
+
+**Total power** is **90.2 µW**. In that, the **Internal power** accounts for 80%, the **Switching power** accounts for 20%.
+
+## PERFORMANCE REPORT
+
+![Performance](./images/7_performance.png)
+
+- tns = 0 (total negative slack)
+- wns = 0 (worst negative slack)
+- worst slack (setup) = 6.37 > 0
+
+That means there is no timing violation in our design.
+We could calculate the maximum Freq as below
+
+```
+f(max) = 1 / (min clk period) = 1 / (clk period - worst slack)
+f(max) = 1 / (10 - 6.37) = 275 MHz
+```
+
+In theory, you can push clk frequency to 275 MHz without affecting the design
+
+## AREA REPORT
+
+![Area](./images/7_area.png)
+
+Area = 56,617.648 µm2
+
