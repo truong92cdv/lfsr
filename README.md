@@ -136,20 +136,93 @@ OpenLane is an automated RTL to GDSII flow based on several components including
 Go to OpenLane directory in your system.
 
 ```sh
-cd /home/drx/Desktop/chip_design/OpenLane
+cd OpenLane
 make mount
 ./flow.tcl -design lfsr -init_design_config -add_to_designs
+cp /home/drx/Desktop/chip_design/Lab/lfsr/src/lfsr.v designs/lfsr/src/lfsr.v
 ```
 
-![OpenLane init](./images/4_openlane_init.png)
-
-Then copy verilog file **lfsr.v** to the **src** directory. 
 OpenLane would create the automatic **config.json** as below:
 
 ![Config json](./images/4_config_json_1.png)
 
-Run the Openlane flow:
+Then run the Openlane flow:
 
 ```sh
-./flow.tcl -design
+./flow.tcl -design lfsr
 ```
+
+![OpenLane flow](./images/4_openlane_1.png)
+
+Your first run will not success. You will got some WARNINGs and ERRORs
+
+```sh
+[STEP 3]
+[INFO]: Running Initial Floorplanning (log: designs/lfsr/runs/RUN_2025.08.13_16.28.31/logs/floorplan/3-initial_fp.log)...
+[WARNING]: Current core area is too small for the power grid settings chosen. The power grid will be scaled down.
+
+...
+
+[STEP 6]
+[INFO]: Generating PDN (log: designs/lfsr/runs/RUN_2025.08.13_16.28.31/logs/floorplan/6-pdn.log)...
+[ERROR]: during executing openroad script /openlane/scripts/openroad/pdn.tcl
+[ERROR]: Log: designs/lfsr/runs/RUN_2025.08.13_16.28.31/logs/floorplan/6-pdn.log
+[ERROR]: Last 10 lines:
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/lfsr/runs/RUN_2025.08.13_16.28.31/tmp/floorplan/3-initial_fp.sdc'…
+[ERROR PDN-0175] Pitch 4.9450 is too small for, must be atleast 6.6000
+Error: pdn_cfg.tcl, 92 PDN-0175
+child process exited abnormally
+
+[ERROR]: Creating issue reproducible...
+
+...
+
+[ERROR]: Flow failed.
+[INFO]: The failure may have been because of the following warnings:
+[WARNING]: Current core area is too small for the power grid settings chosen. The power grid will be scaled down.
+
+```
+
+### FIX BUGS
+
+Pay attention to this ERROR
+```sh
+[ERROR PDN-0175] Pitch 4.9450 is too small for, must be atleast 6.6000
+```
+
+It says that the Pitch (the distance between Power grids) is too small, so it could cause the electrical problem. You should add some line in the **config.json** file to set **FP_PDN_VPITCH** and **FP_PDN_HPITCH**.
+
+And this WARNING
+```sh
+[WARNING]: Current core area is too small for the power grid settings chosen. The power grid will be scaled down.
+```
+
+To fix this, you must set **"FP_CORE_UTIL"** to another value (default is 0.5).
+Here is how I adjust **config.json** file:
+
+```json
+{
+    "DESIGN_NAME": "lfsr",
+    "VERILOG_FILES": "dir::src/*.v",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "DESIGN_IS_CORE": true,
+    "FP_PDN_VPITCH": 6.6,
+    "FP_PDN_HPITCH": 6.6,
+    "FP_CORE_UTIL": 0.4
+}
+```
+
+After fixing, run Openlane flow again:
+```sh
+./flow.tcl -design lfsr
+```
+
+![OpenLane flow fixed](./images/4_openlane_2.png)
+
