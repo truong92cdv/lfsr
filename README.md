@@ -33,6 +33,8 @@ chmod +x *
 
 Verilog code implements a 4-bit Linear Feedback Shift Register (LFSR) to generate a pseudo-random bit sequence. It consists of three modules: mux (2-to-1 multiplexer), flipflop (D-type flip-flop with reset), and lfsr (main module). The LFSR shifts a 4-bit state, with feedback via XOR of bits 2 and 3, and supports seed loading or shifting based on a control signal.
 
+![Block diagram](./images/1_blockdiagram.jpg)
+
 ## 2. RTL Simulation
 
 ### Verilog testbench
