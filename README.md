@@ -140,8 +140,10 @@ cd /home/drx/Desktop/chip_design/OpenLane
 make mount
 ./flow.tcl -design lfsr -init_design_config -add_to_designs
 ```
+
+![OpenLane init](./images/4_openlane_init.png)
+
 Then copy verilog file **lfsr.v** to the **src** directory. 
 OpenLane would create the automatic **config.json** as below:
 
 ![Config json](./images/4_config_json_1.png)
-a
