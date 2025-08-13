@@ -1,5 +1,11 @@
 # LFSR - Linear Feedback Shift Register (with OpenLane flow)
 
+## AUTHOR
+
+- **Name:** Võ Nhật Trường
+- **Email:** truong92cdv@gmail.com
+- **GitHub:** [truong92cdv](https://github.com/truong92cdv)
+
 ## 0. PREPARE PROJECT
 
 run the below commands
