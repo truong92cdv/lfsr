@@ -2,18 +2,30 @@
 
 ## 0. Introduction
 
-## 1. RTL Design
-
+### prepare project
 ```sh
 cd ~
 mkdir lfsr
 cd lfsr
-mkdir src
+mkdir src lib script sim netlist log
 cd src
 wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr.v
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr_tb.v
+cd ../lib
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/lib/primitives.v
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/lib/sky130_fd_sc_hd.v
+cd ../script
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim.sh
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/synth.sh
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/synth.ys
+wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim_gatelevel.sh
+chmod +x *
 ```
 
-### source code lfsr.v
+## 1. RTL Design
+
+### lfsr.v
 ```v
 module mux(q, control, a, b);
     output q;
@@ -67,17 +79,6 @@ endmodule
 
 ## 2. RTL Simulation
 
-```sh
-wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr_tb.v
-cd ..
-mkdir sim
-mkdir script
-cd script
-wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim.sh
-chmod +x sim.sh
-./sim.sh
-```
-
 ### Verilog testbench
 ```v
 module lfsr_tb;
@@ -125,17 +126,30 @@ gtkwave ../sim/lfsr.vcd
 ```
 
 ### RTL simulation with gtkwave
+
+```sh
+./sim.sh
+```
+
 ![RTL simulation](./images/2_rtl_sim.png)
 
 ## 3. Synthesis
 
+### yosys run script (synth.ys)
 ```sh
-wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/src/lfsr_tb.v
-cd ..
-mkdir sim
-mkdir script
-cd script
-wget https://raw.githubusercontent.com/truong92cdv/lfsr/refs/heads/main/script/sim.sh
-chmod +x sim.sh
-./sim.sh
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog ../src/lfsr.v
+synth -top lfsr
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+clean
+flatten
+write_verilog -noattr ../netlist/lfsr_synth.v
+stat
+show -format dot -prefix ../netlist/lfsr_synth
+```
+
+### run synth.sh
+```sh
+./synth.sh
 ```
