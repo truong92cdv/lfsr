@@ -1,4 +1,4 @@
-# LFSR - Linear Feedback Shift Register
+# LFSR - Linear Feedback Shift Register (with OpenLane flow)
 
 ## 0. PREPARE PROJECT
 
