@@ -300,7 +300,7 @@ f(max) = 1 / (min clk period) = 1 / (clk period - worst slack)
 f(max) = 1 / (10 - 6.37) = 275 MHz
 ```
 
-In theory, you can push clk frequency to 275 MHz without affecting the design
+In theory, you can push clk frequency to **275 MHz** without affecting the design
 
 ## AREA REPORT
 
