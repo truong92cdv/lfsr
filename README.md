@@ -311,12 +311,12 @@ klayout final/gds/lfsr.gds
 That means there is no timing violation in our design.
 We could calculate the maximum Freq as below
 
-```sh
+```
 f(max) = 1 / (min clk period) = 1 / (clk period - worst slack)
 f(max) = 1 / (10 - 6.37) = 275 MHz
 ```
 
-In theory, you can push clk frequency to **275 MHz** without affecting the design
+In theory, you can push clk frequency up to **275 MHz** without affecting the design
 
 ## AREA REPORT
 
