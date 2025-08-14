@@ -327,7 +327,7 @@ Area = 56,617.648 µm2
 # 8. FUTURE DEV
 
 - Adjust **config.json** file to optimize the design
-- Use the user-defined cell to optimize
+- Use the custom standard cells to optimize
 - Run step by step (run_synthesis -> run_floorplan -> ... ) to clearly understand the Openlane flow
 - Use OpenLane2 version (the newer ver of OpenLane)
 - Use Caravel Platform
