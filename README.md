@@ -211,7 +211,7 @@ And this **WARNING**
 [WARNING]: Current core area is too small for the power grid settings chosen. The power grid will be scaled down.
 ```
 
-To fix this, you must set **"FP_CORE_UTIL"** to another value (default is 0.5).
+To fix this, you must set **"FP_CORE_UTIL"** to another value (default is 50%).
 Here is how I adjust **config.json** file:
 
 ```json
@@ -223,7 +223,7 @@ Here is how I adjust **config.json** file:
     "DESIGN_IS_CORE": true,
     "FP_PDN_VPITCH": 6.6,
     "FP_PDN_HPITCH": 6.6,
-    "FP_CORE_UTIL": 0.4
+    "FP_CORE_UTIL": 30
 }
 ```
 
