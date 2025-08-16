@@ -296,7 +296,7 @@ klayout final/gds/lfsr.gds
 
 ![Power](./images/7_power.png)
 
-- **Total power** is **8.6 µW**. 
+- **Total power** is **0.86 µW**. 
 - **Internal power** accounts for 84%
 - **Switching power** accounts for 16%.
 
