@@ -6,5 +6,5 @@
     "DESIGN_IS_CORE": true,
     "FP_PDN_VPITCH": 6.6,
     "FP_PDN_HPITCH": 6.6,
-    "FP_CORE_UTIL": 0.4
+    "FP_CORE_UTIL": 30
 }
