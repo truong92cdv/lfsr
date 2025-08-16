@@ -296,9 +296,9 @@ klayout final/gds/lfsr.gds
 
 ![Power](./images/7_power.png)
 
-- **Total power** is **90.2 µW**. 
-- **Internal power** accounts for 80%
-- **Switching power** accounts for 20%.
+- **Total power** is **8.6 µW**. 
+- **Internal power** accounts for 84%
+- **Switching power** accounts for 16%.
 
 ## PERFORMANCE REPORT
 
@@ -306,23 +306,23 @@ klayout final/gds/lfsr.gds
 
 - **tns** = 0 (total negative slack)
 - **wns** = 0 (worst negative slack)
-- **worst slack** (setup) = 6.37 > 0
+- **worst slack** (setup) = 6.60 > 0
 
 That means there is no timing violation in our design.
 We could calculate the maximum Freq as below
 
 ```
 f(max) = 1 / (min clk period) = 1 / (clk period - worst slack)
-f(max) = 1 / (10 - 6.37) = 275 MHz
+f(max) = 1 / (10 - 6.60) = 294 MHz
 ```
 
-In theory, you can push clk frequency up to **275 MHz** without affecting the design
+In theory, you can push clk frequency up to **294 MHz** without affecting the design
 
 ## AREA REPORT
 
 ![Area](./images/7_area.png)
 
-Area = 56,617.648 µm2
+Area = 1,734.43 µm2
 
 # 8. FUTURE DEV
 
